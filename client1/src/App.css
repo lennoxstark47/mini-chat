@@ -1,173 +1,80 @@
-body {
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f2f5;
-  margin: 0;
-  color: #333;
-}
+/* Add these styles to your existing App.css */
 
-.App {
-  width: 100%;
-  max-width: 800px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  text-align: center;
-}
-
-h1 {
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.name-input,
-.message-input {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 70%;
-  max-width: 300px;
-  margin-bottom: 15px;
-}
-
-.chat-button,
-.send-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
-}
-
-.chat-button:hover,
-.send-button:hover {
-  background-color: #0056b3;
-}
-
-.chat-container {
-  min-height: 500px; /* Adjust as needed */
-  justify-content: flex-start;
-}
-
-.chat-area {
-  display: flex;
-  width: 100%;
-  margin-top: 20px;
-  gap: 20px;
-}
-
-.online-users {
-  flex: 1;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  padding: 15px;
-  background-color: #f9f9f9;
-}
-
-.online-users h2 {
-  margin-top: 0;
-  font-size: 18px;
-  color: #555;
-}
-
-.online-users ul {
+.user-list {
   list-style: none;
   padding: 0;
 }
 
-.online-users li {
-  padding: 8px 0;
-  border-bottom: 1px dashed #eee;
+.user-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s, color 0.2s;
+  border-radius: 5px; /* Added for nicer look */
+  margin-bottom: 5px; /* Added spacing */
 }
 
-.online-users li:last-child {
+.user-item:last-child {
   border-bottom: none;
 }
 
-.chatbox {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  padding: 15px;
-  background-color: #f9f9f9;
+.user-item:hover {
+  background-color: #e6f7ff;
+  color: #007bff;
+}
+
+.user-item.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.user-item-placeholder {
+  padding: 10px 15px;
+  color: #888;
+  font-style: italic;
 }
 
 .chatbox h2 {
-  margin-top: 0;
-  font-size: 18px;
-  color: #555;
+  display: flex; /* To allow flexible text arrangement */
+  align-items: center;
+  gap: 10px;
 }
 
 .messages {
-  flex-grow: 1;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  overflow-y: auto;
-  max-height: 300px; /* Limit chatbox height */
-  background-color: white;
+  display: flex;
+  flex-direction: column; /* Messages stack vertically */
 }
 
 .message {
+  padding: 8px 12px;
+  border-radius: 15px; /* More modern bubble look */
   margin-bottom: 8px;
-  padding: 5px 8px;
-  border-radius: 5px;
-  max-width: 80%;
+  max-width: 75%; /* Limit width of message bubbles */
   word-wrap: break-word;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05); /* Subtle shadow */
 }
 
 .my-message {
   background-color: #dcf8c6;
-  align-self: flex-end;
-  margin-left: auto;
+  align-self: flex-end; /* Align to right */
+  border-bottom-right-radius: 2px; /* Pointy end for sender */
 }
 
 .other-message {
   background-color: #e0e0e0;
-  align-self: flex-start;
+  align-self: flex-start; /* Align to left */
+  border-bottom-left-radius: 2px; /* Pointy end for receiver */
 }
 
 .message strong {
-  color: #0056b3;
+  font-weight: bold;
+  color: #333; /* Darker for better contrast */
 }
 
-.message-input-area {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
-
-.message-input {
-  flex-grow: 1;
-  margin-bottom: 0; /* Override previous margin */
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .chat-area {
-    flex-direction: column;
-  }
-  .online-users, .chatbox {
-    width: 100%;
-  }
+.no-messages {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 20px;
 }
